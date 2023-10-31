@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 
 def islower(c):
-    return 'a' <= c <= 'z' if c else False
+    if not c:
+        raise ValueError("Input cannot be an empty string")
+    return 'a' <= c <= 'z'
