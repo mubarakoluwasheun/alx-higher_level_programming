@@ -7,7 +7,8 @@ def safe_print_division(a, b):
         b (int): The divisor.
 
     Returns:
-        float: The result of the division, or None if division by zero occurred.
+        float: The result of the division, or
+               None if division by zero occurred.
     """
     result = None
     try:
@@ -16,4 +17,4 @@ def safe_print_division(a, b):
         pass
     finally:
         print("Inside result: {}".format(result))
-        return result
+        return (result)
