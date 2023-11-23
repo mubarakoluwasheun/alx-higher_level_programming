@@ -17,16 +17,11 @@ class Square:
 
     @property
     def size(self):
-        """This is a getter method for the size attribute."""
+        """This is a get/set method for the size attribute."""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """
-        This is a setter method for the size attribute.
-        It checks if the value is an integer and if it's greater than or equal to 0.
-        If not, it raises an exception.
-        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
