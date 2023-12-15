@@ -46,7 +46,7 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__+ ".json"
+        filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
                 jsonfile.write("[]")
@@ -69,7 +69,7 @@ class Base:
         return json.loads(json_string)
 
     @classmethod
-    def save_to_file(cls, list_objs):
+    def create(cls, **dictionary):
         """Return an instance with all attributes already set.
 
         Args:
@@ -96,10 +96,10 @@ class Base:
         filename = cls.__name__ + ".json"
         try:
             with open(filename, "r") as jsonfile:
-                list_dicts - Base.from_json_string(jsonfile.read())
+                list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**dic) for dic in list_dicts]
         except IOError:
-            return[]
+            return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -124,14 +124,14 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """Deserialize a list of classes instantiated from a CSV file.
-        
+
         Read from `<cls.__name__>.csv`.
-        
+
         Returns:
             If the file does not exist - an empty list.
             Otherwise - a list of objects.
         """
-        filename = cls.__name__+ ".csv"
+        filename = cls.__name__ + ".csv"
         try:
             with open(filename, "r", newline="") as csvfile:
                 if cls.__name__ == "Rectangle":
@@ -144,11 +144,11 @@ class Base:
                 return [cls.create(**dic) for dic in list_dicts]
         except IOError:
             return []
-        
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         """Draw Rectangles and squares using the turtle module.
-        
+
         Args:
             list_rectangles (list): A list of Rectangle objects to drwa.
             list_squares (list): A list of Square objects to draw.

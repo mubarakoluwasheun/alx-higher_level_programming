@@ -94,7 +94,7 @@ class Rectangle(Base):
             print("")
             return
 
-        [print("") for y in range (self.y)]
+        [print("") for y in range(self.y)]
         for h in range(self.height):
             [print(" ", end="") for x in range(self.x)]
             [print("#", end="") for w in range(self.width)]
@@ -103,7 +103,7 @@ class Rectangle(Base):
     def __str__(self):
         """Returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
         return "[{}] ({}) {}/{} - {}/{}".format(
-            self.__class__.__name__, slef.id, self.__x, self.__y,
+            self.__class__.__name__, self.id, self.__x, self.__y,
             self.__width, self.__heigh)
 
     def update(self, *args, **kwargs):
