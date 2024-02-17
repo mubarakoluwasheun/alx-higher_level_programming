@@ -1,5 +1,4 @@
 #!/iusr/bin/node
-
 class Rectangle {
 }
 
