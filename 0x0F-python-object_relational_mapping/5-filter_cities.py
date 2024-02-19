@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-takes in the name of a state as an argument and lists all cities
+Returns the name of a state as an argument and lists all cities
 Arguments: username, password, database, state name
 """
 
