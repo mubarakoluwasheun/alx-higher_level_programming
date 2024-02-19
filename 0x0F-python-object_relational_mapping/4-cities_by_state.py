@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-lists all cities from the database hbtn_0e_4_usa
-Arguments: username, password, database
+Return info from both tables (tables 'cities' 'states).
+Parameters: username, password, database
 """
 
 import MySQLdb
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost",
                          port=3306,
                          user=argv[1],
-                         passwd=arv[2],
+                         passwd=argv[2],
                          db=argv[3])
 
     # create cursor to exec queries using SQL; join two tables for all info
