@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists all states from the database hbtn_0e_0_usa
+Return all values in a table
 Parameters: username, password, database
 """
 
