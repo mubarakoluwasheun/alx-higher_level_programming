@@ -1,32 +1,31 @@
 #!/usr/bin/python3
 """
-Return cities that are in the state given (tables 'cities' 'states).
-Arguments: username, password, database, state.
+Return state id given state name; SQL injection free.
+Parameters: username, password, database, state name to match.
 """
 
-import MySQLdb
 from sys import argv
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 
 if __name__ == "__main__":
 
-    # connect to database
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3])
+    # make engine for database
+    user = argv[1]
+    passwd = argv[2]
+    db = argv[3]
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
+                           format(user, passwd, db), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    # create cursor to exec queries using SQL; join two tables for all info
-    cursor = db.cursor()
-    sql_cmd = """SELECT cities.name
-                 FROM states
-                 INNER JOIN cities ON states.id = cities.state_id
-                 WHERE states.name LIKE %s
-                 ORDER BY cities.id ASC"""
-    cursor.execute(sql_cmd, (argv[4], ))
-
-    # format the printing of cities of same state separated by commas
-    print(', '.join(["{:s}".format(row[0]) for row in cursor.fetchall()]))
-
-    cursor.close()
-    db.close()
+    # query python instance in database state id given state name
+    state = session.query(State).filter_by(name=argv[4]).first()
+    if state:
+        print("{:d}".format(state.id))
+    else:
+        print("Not found")
+    session.close()

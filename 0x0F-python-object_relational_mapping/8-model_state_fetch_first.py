@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-prints the first State object from the database hbtn_0e_6_usa
-Arguments: username, password, db-name
+Return first state object from database via Python.
+Parameters: username, password, database
 """
 
 from sys import argv
@@ -12,12 +12,12 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
 
-    #make engine for database
+    # make engine for database
     user = argv[1]
     passwd = argv[2]
     db = argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                            format(user, passwd, db), pool_pre_ping=True)
+                           format(user, passwd, db), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
 

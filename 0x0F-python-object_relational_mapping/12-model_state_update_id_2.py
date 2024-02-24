@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Update state: given id, change state name.
-Arguments: username, passwoprd, database.
+Parameters: username, password, database.
 """
 
 from sys import argv
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     passwd = argv[2]
     db = argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                            format(user, passwd, db), pool_pre_ping=True)
+                           format(user, passwd, db), pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -27,4 +27,4 @@ if __name__ == "__main__":
     state.name = "New Mexico"
 
     session.commit()
-    sewssion.close()
+    session.close()

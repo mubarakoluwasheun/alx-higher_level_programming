@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Use table relationship to access and print city and state.
-Script Arguments: username, password, database.
+Script parameters: username, password, database.
 """
 
 from sys import argv
@@ -11,14 +11,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-if __main__ == "__name__":
+if __name__ == "__main__":
 
     # make engine for database
     user = argv[1]
     passwd = argv[2]
     db = argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                            format(user, passwd, db), pool_pre_ping=True)
+                           format(user, passwd, db), pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -28,7 +28,6 @@ if __main__ == "__name__":
     for state in rows:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print("    {}: {}".format(City_id, city.name))
+            print("    {}: {}".format(city.id, city.name))
 
     session.close()
-    

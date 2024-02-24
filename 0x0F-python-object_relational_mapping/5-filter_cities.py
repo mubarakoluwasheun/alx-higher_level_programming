@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-Returns the name of a state as an argument and lists all cities
-Arguments: username, password, database, state name
+Return cities that are in the state given (tables 'cities' 'states).
+Parameters: username, password, database, state.
 """
 
 import MySQLdb
 from sys import argv
 
-if __name__ == "__main__:
+if __name__ == "__main__":
 
     # connect to database
     db = MySQLdb.connect(host="localhost",
