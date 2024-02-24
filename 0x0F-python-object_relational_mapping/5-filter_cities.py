@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-takes in the name of a state as an argument and lists all cities
-of that state, using the database hbtn_0e_4_usa
-Arguments: username, password, db-name, state name
+Returns the name of a state as an argument and lists all cities
+Arguments: username, password, database, state name
 """
 
 import MySQLdb
@@ -31,4 +30,3 @@ if __name__ == "__main__:
 
     cursor.close()
     db.close()
-    
