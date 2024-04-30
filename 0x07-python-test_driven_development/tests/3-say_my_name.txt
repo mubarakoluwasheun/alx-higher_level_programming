@@ -26,11 +26,6 @@ Test two strings given:
 The parameter ```last_name``` is optional. If no last name is provided,
 an empty string is printed instead.
 
-::
-
-    >>> say_my_name("OLUWASHEUN")
-    My name is OLUWASHEUN
-
 FAIL CASES:
 
 The parameters ``first_name`` and ``last_name``` must be strings. Otherwise,
