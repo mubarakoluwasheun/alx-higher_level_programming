@@ -28,8 +28,8 @@ an empty string is printed instead.
 
 ::
 
-    >>> say_my_name("IDRIS")
-    My name is IDRIS
+    >>> say_my_name("OLUWASHEUN")
+    My name is OLUWASHEUN
 
 FAIL CASES:
 
